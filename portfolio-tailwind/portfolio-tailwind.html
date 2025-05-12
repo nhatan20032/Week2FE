@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Tailwind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-black text-white">
+    <header
+      class="fixed top-0 left-0 right-0 bg-black p-5 flex justify-between items-center z-50"
+    >
+      <img
+        class="w-[200px] max-w-full h-auto"
+        src="./pictures/logo.png"
+        alt="logo"
+      />
+      <ul class="flex items-center gap-[10px]">
+        <li>
+          <a class="text-white px-[10px] text-[20px] font-bold" href="#home"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a class="text-white px-[10px] text-[20px] font-bold" href="#about-me"
+            >About me</a
+          >
+        </li>
+        <li>
+          <a class="text-white px-[10px] text-[20px] font-bold" href="#contact"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </header>
+
+    <article id="home" class="flex pt-[120px]">
+      <div class="w-1/2 pl-[100px] h-screen">
+        <div class="mt-[30%]">
+          <span class="text-[#ffbf35] text-[20px]"
+            >Welcome To Nash Nguyenx Portfolio</span
+          >
+          <h1
+            class="text-[3.5em] text-[#ffbf35] flex items-center h-[20px] mt-4"
+          >
+            <span class="text-white mr-[10px]">Nash</span> Nguyễn
+          </h1>
+          <span class="text-white text-[30px] mt-4 block"
+            >Thực tập sinh tại Smile Việt Nam - Bài tập FE</span
+          >
+          <div class="flex text-[50px] mt-10 w-[200px] justify-between">
+            <a
+              href="https://www.facebook.com/nhatann.sooo/"
+              target="_blank"
+              class="text-[#ffbf35]"
+            >
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/sooo_19.02/"
+              target="_blank"
+              class="text-[#ffbf35]"
+            >
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a
+              href="https://github.com/nhatan20032"
+              target="_blank"
+              class="text-[#ffbf35]"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="w-1/2 h-[85vh] flex justify-center items-center">
+        <div class="relative w-1/2">
+          <img
+            class="absolute w-[120%] left-0 top-[70px] z-0 transition-transform hover:scale-[1.05] hover:rotate-[1deg]"
+            src="./pictures/yellow.png"
+            alt="dev-background"
+          />
+          <img
+            class="relative w-[90%] z-10 transition-transform hover:scale-[1.05] hover:rotate-[1deg]"
+            src="./pictures/otter.png"
+            alt="dev"
+          />
+        </div>
+      </div>
+    </article>
+
+    <article
+      id="about-me"
+      class="flex justify-around items-center h-screen bg-[#ffbf35] text-black"
+    >
+      <div class="w-[100vh] p-[60px] grid text-[25px]">
+        <h1 class="font-bold"><i class="fa-solid fa-user"></i> Tôi tên là: Nguyễn Lê Nhật An</h1>
+        <p>
+          <i class="fa-solid fa-address-card"></i> Bạn có thể gọi tôi là: Nash
+          Nguyễn
+        </p>
+        <p>
+          <i class="fa-solid fa-building"></i> Thực tập sinh tại Smile Việt Nam
+        </p>
+        <p><i class="fa-solid fa-code"></i> Đây là phần bài tập FE của tôi</p>
+        <p>
+          <i class="fa-solid fa-heart"></i> Tôi yêu thích: Thiết kế UI, chơi
+          Valorant
+        </p>
+      </div>
+      <div class="w-[100vh] p-5">
+        <img
+          class="w-[80%] rounded-[12px] transition-transform hover:scale-[1.05] hover:rotate-[1deg]"
+          src="./pictures/otter-aboutme.png"
+          alt="Ảnh about me"
+        />
+      </div>
+    </article>
+
+    <article id="contact" class="p-[60px] bg-black text-center">
+      <h2 class="text-[32px] mb-[10px] text-white">Liên hệ với tôi</h2>
+      <p class="text-[18px] text-gray-400 mb-[30px]">
+        Nếu bạn muốn hợp tác hoặc cần thêm thông tin, hãy gửi tin nhắn cho tôi:
+      </p>
+
+      <form class="flex flex-col gap-[15px] max-w-[500px] mx-auto">
+        <input
+          type="text"
+          placeholder="Tên của bạn"
+          class="p-[12px] border border-gray-300 rounded-[8px] text-black text-[16px]"
+        />
+        <input
+          type="email"
+          placeholder="Email của bạn"
+          class="p-[12px] border border-gray-300 rounded-[8px] text-black text-[16px]"
+        />
+        <textarea
+          placeholder="Lời nhắn..."
+          rows="5"
+          class="p-[12px] border border-gray-300 rounded-[8px] text-black text-[16px]"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-[#f39c12] hover:bg-[#d68910] text-white p-[12px] rounded-[8px] text-[16px] cursor-pointer"
+        >
+          Gửi
+        </button>
+      </form>
+
+      <div class="mt-[30px]">
+        <a
+          href="https://www.facebook.com/nhatann.sooo/"
+          target="_blank"
+          class="text-[#8e8686] mx-[10px] text-[24px] hover:text-[#f39c12]"
+        >
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a
+          href="https://www.instagram.com/sooo_19.02/"
+          target="_blank"
+          class="text-[#8e8686] mx-[10px] text-[24px] hover:text-[#f39c12]"
+        >
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a
+          href="https://github.com/nhatan20032"
+          target="_blank"
+          class="text-[#8e8686] mx-[10px] text-[24px] hover:text-[#f39c12]"
+        >
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+    </article>
+  </body>
+</html>
