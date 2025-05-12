@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio CSS</title>
+    <link rel="stylesheet" href="portfplio.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="portfolio.js"></script>
+  </head>
+  <body>
+    <header class="menu">
+      <img class="nav-img" src="./pictures/logo.png" alt="logo" />
+      <ul class="navigation-bar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-me">About me</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </header>
+    <article id="home" class="content">
+      <div class="information">
+        <div class="container-info">
+          <span class="welcome-text">Welcome To Nash Nguyenx Portfolio</span>
+          <h1 class="dev-name">
+            <span style="color: white; margin-right: 10px">Nash</span> Nguyễn
+          </h1>
+          <span class="description">
+            Thực tập sinh tại Smile Việt Nam - Bài tập FE
+          </span>
+          <div class="icon-info">
+            <a href="https://www.facebook.com/nhatann.sooo/" target="_blank"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="https://www.instagram.com/sooo_19.02/" target="_blank"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://github.com/nhatan20032" target="_blank"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="picture-of-mine">
+        <div class="image-container">
+          <img class="bg" src="./pictures/yellow.png" alt="dev-background" />
+          <img class="fg" src="./pictures/otter.png" alt="dev" />
+        </div>
+      </div>
+    </article>
+
+    <article id="about-me" class="about-me">
+      <div class="info-about-me">
+        <h1><i class="fa-solid fa-user"></i> Tôi tên là: Nguyễn Lê Nhật An</h1>
+        <p>
+          <i class="fa-solid fa-address-card"></i> Bạn có thể gọi tôi là: Nash
+          Nguyễn
+        </p>
+        <p>
+          <i class="fa-solid fa-building"></i> Thực tập sinh tại Smile Việt Nam
+        </p>
+        <p><i class="fa-solid fa-code"></i> Đây là phần bài tập FE của tôi</p>
+        <p>
+          <i class="fa-solid fa-heart"></i> Tôi yêu thích: Thiết kế UI, chơi
+          Valorant
+        </p>
+      </div>
+      <div class="img-about-me">
+        <img src="./pictures/otter-aboutme.png" alt="Ảnh about me" />
+      </div>
+    </article>
+
+    <article id="contact" class="contact">
+      <h2>Liên hệ với tôi</h2>
+      <p>
+        Nếu bạn muốn hợp tác hoặc cần thêm thông tin, hãy gửi tin nhắn cho tôi:
+      </p>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Tên của bạn" />
+        <input type="email" placeholder="Email của bạn" />
+        <textarea placeholder="Lời nhắn..." rows="5"></textarea>
+        <button type="submit">Gửi</button>
+      </form>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/nhatann.sooo/" target="_blank"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a href="https://www.instagram.com/sooo_19.02/" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="https://github.com/nhatan20032" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+      </div>
+    </article>
+  </body>
+</html>
