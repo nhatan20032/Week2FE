@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="flex flex-col items-center">
+    <h1 class="m-4">Form nhập học sinh</h1>
+    <form id="formSubmitStudent" class="max-w-md w-1/2 mx-auto">
+      <div class="relative w-full mb-5 group">
+        <input
+          type="number"
+          name="studentCode"
+          id="studentCode"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 focus:outline-none focus:border-blue-600"
+          placeholder="Mã học sinh..."
+          required
+        />
+        <p id="codeError" class="mt-1 text-sm text-red-500 hidden">
+          Mã học sinh đã tồn tại.
+        </p>
+      </div>
+      <div class="relative w-full mb-5 group">
+        <input
+          type="text"
+          name="studentName"
+          id="studentName"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 focus:outline-none focus:border-blue-600"
+          placeholder="Tên học sinh..."
+          required
+        />
+        <p id="nameError" class="mt-1 text-sm text-red-500 hidden">
+          Tên không được có kí tự đặc biệt và số.
+        </p>
+      </div>
+      <div class="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="point"
+          id="point"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-600 focus:outline-none focus:border-blue-600"
+          placeholder="Điểm của học sinh..."
+          required
+        />
+        <p id="pointError" class="mt-1 text-sm text-red-500 hidden">
+          Điểm không được lớn hơn 10 và nhỏ hơn 0.
+        </p>
+      </div>
+      <button
+        type="submit"
+        class="cursor-pointer relative inline-block text-lg group"
+      >
+        <span
+          class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white"
+        >
+          <span
+            class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"
+          ></span>
+          <span
+            class="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"
+          ></span>
+          <span class="relative">Thêm học sinh</span>
+        </span>
+        <span
+          class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg"
+        ></span>
+      </button>
+      <button
+        onclick="openModal()"
+        type="button"
+        class="cursor-pointer relative inline-block text-lg group pl-2"
+      >
+        <span
+          class="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white"
+        >
+          <span
+            class="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"
+          ></span>
+          <span
+            class="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-gray-900 group-hover:-rotate-180 ease"
+          ></span>
+          <span class="relative">Xem danh sách</span>
+        </span>
+        <span
+          class="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-gray-900 rounded-lg"
+        ></span>
+      </button>
+    </form>
+    <div id="modalContainer"></div>
+
+    <script src="main.js"></script>
+    <script>
+      loadStudentModal();
+    </script>
+  </body>
+</html>
