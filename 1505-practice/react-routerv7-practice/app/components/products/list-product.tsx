@@ -92,7 +92,7 @@ export default function ListProduct() {
                     navigate(`/product/${item.id}`);
                   }}
                   key={item.id}
-                  className="flex flex-col justify-center bg-[#000000] items-center border-0 p-5 shadow-lg shadow-[#000000] rounded-2xl hover:cursor-pointer"
+                  className="flex flex-col justify-center bg-white items-center border-0 p-5 shadow-lg rounded-2xl hover:cursor-pointer"
                 >
                   <img src={item.thumbnail} alt={item.title}></img>
                   <h1 className="font-bold italic text-[#EFA7B5]">

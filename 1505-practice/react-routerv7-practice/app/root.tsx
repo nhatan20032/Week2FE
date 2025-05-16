@@ -15,6 +15,7 @@ import "primeicons/primeicons.css";
 
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Navigation from "./components/home/Navigation";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -37,6 +38,7 @@ export default function App() {
   return (
     <>
       <Provider store={store}>
+        <Navigation></Navigation>
         <Outlet />
       </Provider>
     </>

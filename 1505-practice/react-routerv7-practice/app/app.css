@@ -26,3 +26,7 @@ body {
   background-color: #EFA7B5 !important;
   border: none !important;
 }
+
+.p-sidebar-right .p-sidebar{
+  width: 32rem;
+}

@@ -1,6 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { Product } from "~/types/Product";
 
+const storedCart =
+  typeof window !== "undefined" ? localStorage.getItem("cart") : null;
 interface ProductState {
   product: Product | null;
   cart: Product[];
@@ -8,7 +10,7 @@ interface ProductState {
 
 const initialState: ProductState = {
   product: null,
-  cart: [],
+  cart: storedCart ? JSON.parse(storedCart) : [],
 };
 
 export const productSlice = createSlice({
@@ -20,6 +22,11 @@ export const productSlice = createSlice({
       state.product = action.payload;
     },
     addToCart: (state, action: PayloadAction<Product>) => {
+      const exist = state.cart.some((p) => p.id === action.payload.id);
+      if (exist) {
+        alert("Sản phẩm đã trong giỏ");
+        return;
+      }
       state.cart.push(action.payload);
     },
     removeFromCart: (state, action: PayloadAction<number>) => {

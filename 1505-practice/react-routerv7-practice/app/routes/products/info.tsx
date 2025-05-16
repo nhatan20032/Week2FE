@@ -1,20 +1,87 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "~/redux/store";
 import { Paginator } from "primereact/paginator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "primereact/button";
 import { Rating } from "primereact/rating";
+import { addToCart } from "~/redux/productSlice";
+import axios from "axios";
+import apiUrls from "~/types/ApiUrl";
+import type { Route } from "./+types/info";
+import { useNavigate } from "react-router";
+import type { Product } from "~/types/Product";
+import confetti from "canvas-confetti";
 
-export default function ProductInfo() {
-  const product = useSelector((state: RootState) => state.product.product);
+export async function loader({ params }: Route.LoaderArgs) {
+  const productId = params.productId;
+  return { productId };
+}
+
+export default function ProductInfo({ loaderData }: Route.ComponentProps) {
+  const [product, setProduct] = useState<Product>();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [first, setFirst] = useState(0);
+
+  const productStoreData = useSelector(
+    (state: RootState) => state.product.product
+  );
+
+  useEffect(() => {
+    if (productStoreData == null) {
+      const id = Number(loaderData.productId);
+      if (isNaN(id)) {
+        navigate("/");
+        return;
+      }
+      axios
+        .get(apiUrls.getProductById(id))
+        .then((res) => setProduct(res.data))
+        .catch(() => navigate("/"));
+    } else {
+      setProduct(productStoreData);
+    }
+  }, [loaderData, productStoreData]);
 
   const onPageChange = (event: { first: number }) => {
     setFirst(event.first);
   };
 
   const currentImage = product?.images?.[first];
+
+  const firework = () => {
+    for (let i = 0; i < 5; i++) {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: {
+          x: Math.random(),
+          y: Math.random() * 0.6,
+        },
+      });
+    }
+  };
+
+  function InfoBlock({
+    title,
+    children,
+  }: {
+    title: string;
+    children: React.ReactNode;
+  }) {
+    return (
+      <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
+        <h1 className="text-xl font-bold mb-2">{title}</h1>
+        {children}
+      </div>
+    );
+  }
+
+  const renderText = (label: string, value?: string | number) => (
+    <p>
+      <span className="text-yellow-100 font-bold">{label}</span>: {value}
+    </p>
+  );
 
   return (
     <div className="flex justify-center rounded-2xl items-start border-0 p-5 m-5 shadow-2xl shadow-[#EFA7B5] bg-[#EFA7B5]">
@@ -35,55 +102,39 @@ export default function ProductInfo() {
         )}
       </div>
       <div className="flex flex-col w-1/3 gap-5">
-        <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
-          <h1 className="text-xl font-bold mb-2">{product?.title}</h1>
+        <InfoBlock title={product?.title ?? ""}>
           <p>{product?.description}</p>
-        </div>
-        <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
-          <h1 className="text-xl font-bold mb-2">Information</h1>
-          <p>
-            <span className="text-yellow-100 font-bold">Brand</span>:{" "}
-            {product?.brand}
-          </p>
-          <p>
-            <span className="text-yellow-100 font-bold">Category</span>:{" "}
-            {product?.category}
-          </p>
-          <p>
-            <span className="text-yellow-100 font-bold">Stock</span>:{" "}
-            {product?.stock}
-          </p>
-          <p>
-            <span className="text-yellow-100 font-bold">Price</span>:{" "}
-            {product?.price} $
-          </p>
-        </div>
-        <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
-          <h1 className="text-xl font-bold mb-2">Rating of product</h1>
-          <Rating value={product?.rating} readOnly cancel={false}></Rating>
-        </div>
-        <div className="bg-black flex flex-col p-4 gap-y-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
-          {product?.reviews.map((item, index) => {
-            return (
-              <div key={index}>
-                <h1 className="text-xl font-bold mb-2">{item.reviewerName}</h1>
-                <Rating value={item?.rating} readOnly cancel={false}></Rating>
-                <p>
-                  <span className="text-yellow-100 font-bold">Comment</span>:{" "}
-                  {item.comment}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
+        </InfoBlock>
+        <InfoBlock title="Information">
+          {renderText("Brand", product?.brand)}
+          {renderText("Category", product?.category)}
+          {renderText("Stock", product?.stock)}
+          {renderText("Price", `${product?.price} $`)}
+        </InfoBlock>
+        <InfoBlock title="Rating of product">
+          <Rating value={product?.rating} readOnly cancel={false} />
+        </InfoBlock>
+        <InfoBlock title="Reviews">
+          {product?.reviews.map((item, i) => (
+            <div key={i}>
+              <h1 className="text-xl font-bold mb-2">{item.reviewerName}</h1>
+              <Rating value={item.rating} readOnly cancel={false} />
+              {renderText("Comment", item.comment)}
+            </div>
+          ))}
+        </InfoBlock>
+        <InfoBlock title="">
           <Button
             label="Add to Cart"
             className="w-full custom-bg"
             raised
-            icon="pi pi-shopping-cart"            
+            icon="pi pi-shopping-cart"
+            onClick={() => {
+              dispatch(addToCart(product!));
+              firework();
+            }}
           />
-        </div>
+        </InfoBlock>
       </div>
     </div>
   );
