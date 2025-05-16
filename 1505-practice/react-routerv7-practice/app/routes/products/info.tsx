@@ -40,12 +40,40 @@ export default function ProductInfo() {
         </div>
         <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
           <h1 className="text-xl font-bold mb-2">Information</h1>
-          <p><span className="text-yellow-100 font-bold">Brand</span>: {product?.brand}</p>
-          <p><span className="text-yellow-100 font-bold">Category</span>: {product?.category}</p>          
+          <p>
+            <span className="text-yellow-100 font-bold">Brand</span>:{" "}
+            {product?.brand}
+          </p>
+          <p>
+            <span className="text-yellow-100 font-bold">Category</span>:{" "}
+            {product?.category}
+          </p>
+          <p>
+            <span className="text-yellow-100 font-bold">Stock</span>:{" "}
+            {product?.stock}
+          </p>
+          <p>
+            <span className="text-yellow-100 font-bold">Price</span>:{" "}
+            {product?.price} $
+          </p>
         </div>
         <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
           <h1 className="text-xl font-bold mb-2">Rating of product</h1>
           <Rating value={product?.rating} readOnly cancel={false}></Rating>
+        </div>
+        <div className="bg-black flex flex-col p-4 gap-y-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
+          {product?.reviews.map((item, index) => {
+            return (
+              <div key={index}>
+                <h1 className="text-xl font-bold mb-2">{item.reviewerName}</h1>
+                <Rating value={item?.rating} readOnly cancel={false}></Rating>
+                <p>
+                  <span className="text-yellow-100 font-bold">Comment</span>:{" "}
+                  {item.comment}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
