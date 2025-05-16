@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "~/redux/store";
 import { Paginator } from "primereact/paginator";
 import { useState } from "react";
+import { Button } from "primereact/button";
 import { Rating } from "primereact/rating";
 
 export default function ProductInfo() {
@@ -74,6 +75,14 @@ export default function ProductInfo() {
               </div>
             );
           })}
+        </div>
+        <div className="bg-black p-5 rounded-2xl shadow-lg shadow-black text-white ml-5">
+          <Button
+            label="Add to Cart"
+            className="w-full custom-bg"
+            raised
+            icon="pi pi-shopping-cart"            
+          />
         </div>
       </div>
     </div>

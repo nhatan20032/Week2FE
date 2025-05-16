@@ -21,3 +21,8 @@ body {
   background-color: #ff9fb2;
   border: none;
 }
+
+.custom-bg {
+  background-color: #EFA7B5 !important;
+  border: none !important;
+}
