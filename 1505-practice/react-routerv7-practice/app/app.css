@@ -1,0 +1,23 @@
+@import "tailwindcss";
+body {
+  background-color: black;
+}
+
+.p-paginator {
+  background-color: #efa7b5;
+}
+
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+  color: #000;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+  color: #000;
+}
+.p-dropdown {
+  background-color: #ff9fb2;
+  border: none;
+}
